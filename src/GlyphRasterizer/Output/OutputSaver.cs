@@ -3,24 +3,12 @@ using GlyphRasterizer.Prompting.Prompts.InputType.String.Glyph;
 using GlyphRasterizer.Terminal;
 using ImageMagick;
 using Resources.Messages;
-using System.Collections.Immutable;
 using System.IO;
 
 namespace GlyphRasterizer.Output;
 
 internal sealed class OutputSaver(OverwriteDecisionService overwriteDecisionService)
 {
-    private static readonly ImmutableArray<MagickFormat> _formatsSupportingAlpha =
-        ImmutableArray.Create(
-            MagickFormat.Png,
-            MagickFormat.WebP,
-            MagickFormat.Tiff,
-            MagickFormat.Ico,
-            MagickFormat.Bmp,
-            MagickFormat.Psd,
-            MagickFormat.Tga
-        );
-
     internal void SaveImageAsEachSelectedFormat(Glyph glyph, MagickImage image, SessionContext context)
     {
         Directory.CreateDirectory(context.OutputDirectory!);
@@ -42,29 +30,15 @@ internal sealed class OutputSaver(OverwriteDecisionService overwriteDecisionServ
                 // ICO requires multiple embedded sizes; resize each and add to collection for proper scaling
                 if (imageFormat == MagickFormat.Ico)
                 {
-                    using var icoCollection = new MagickImageCollection();
-                    uint[] icoSizes = [16, 32, 48, 64, 128, 256];
-
-                    foreach (uint icoSize in icoSizes)
-                    {
-                        var imageToResize = imageToWrite.Clone();
-                        imageToResize.Resize(icoSize, icoSize);
-                        imageToResize.Format = MagickFormat.Png; // ICO uses PNG internally
-                        icoCollection.Add(imageToResize);
-                    }
-
-                    icoCollection.Write(outputPath, MagickFormat.Ico);
+                    WriteIco(outputPath, imageToWrite);
                 }
                 else if (MagickFormatSupportsAlpha(imageFormat))
                 {
-                    imageToWrite.Format = imageFormat;
-                    imageToWrite.Write(outputPath);
+                    WriteAlpha(outputPath, imageToWrite, imageFormat);
                 }
                 else
                 {
-                    using MagickImage flattenedImage = FlattenImageForOpaqueFormat(imageToWrite, MagickColors.White);
-                    flattenedImage.Format = imageFormat;
-                    flattenedImage.Write(outputPath);
+                    WriteOpaque(outputPath, imageToWrite, imageFormat);
                 }
 
                 Console.WriteLine(InfoMessages.SavedFile_FormatString, Path.GetFileName(outputPath));
@@ -82,9 +56,38 @@ internal sealed class OutputSaver(OverwriteDecisionService overwriteDecisionServ
         return Path.Combine(directory, $"Glyph_{glyph.Label}.{formatExtensionName.ToLower()}");
     }
 
-    private static bool MagickFormatSupportsAlpha(MagickFormat format) => _formatsSupportingAlpha.Contains(format);
+    private static bool MagickFormatSupportsAlpha(MagickFormat format) => AppConfig.ImageFormatsSupportingAlpha.Contains(format);
 
-    private static MagickImage FlattenImageForOpaqueFormat(IMagickImage<byte> image, MagickColor backgroundColor)
+    private static void WriteIco(string outputPath, IMagickImage<byte> imageToWrite)
+    {
+        using var icoCollection = new MagickImageCollection();
+        uint[] icoSizes = [16, 32, 48, 64, 128, 256];
+
+        foreach (uint icoSize in icoSizes)
+        {
+            var imageToResize = imageToWrite.Clone();
+            imageToResize.Resize(icoSize, icoSize);
+            imageToResize.Format = MagickFormat.Png; // ICO uses PNG internally
+            icoCollection.Add(imageToResize);
+        }
+
+        icoCollection.Write(outputPath, MagickFormat.Ico);
+    }
+
+    private static void WriteAlpha(string outputPath, IMagickImage<byte> imageToWrite, MagickFormat imageFormat)
+    {
+        imageToWrite.Format = imageFormat;
+        imageToWrite.Write(outputPath);
+    }
+
+    private static void WriteOpaque(string outputPath, IMagickImage<byte> imageToWrite, MagickFormat imageFormat)
+    {
+        using MagickImage flattenedImage = FlattenImage(imageToWrite, MagickColors.White);
+        flattenedImage.Format = imageFormat;
+        flattenedImage.Write(outputPath);
+    }
+
+    private static MagickImage FlattenImage(IMagickImage<byte> image, MagickColor backgroundColor)
     {
         var background = new MagickImage(backgroundColor, image.Width, image.Height);
         background.Composite(image, CompositeOperator.Over);

@@ -25,4 +25,15 @@ public static class AppConfig
             MagickFormat.Tga,
             MagickFormat.Pnm
         );
+
+    public static readonly ImmutableArray<MagickFormat> ImageFormatsSupportingAlpha =
+        ImmutableArray.Create(
+            MagickFormat.Png,
+            MagickFormat.WebP,
+            MagickFormat.Tiff,
+            MagickFormat.Ico,
+            MagickFormat.Bmp,
+            MagickFormat.Psd,
+            MagickFormat.Tga
+        );
 }

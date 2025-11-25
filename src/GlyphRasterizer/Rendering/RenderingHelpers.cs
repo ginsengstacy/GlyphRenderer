@@ -30,12 +30,10 @@ public static class RenderingHelpers
         return new MagickImage(memoryStream);
     }
 
-    private static Geometry GetGlyphOutline(Glyph glyph, GlyphTypeface typeface, double renderingEmSize)
-    {
-        return typeface.CharacterToGlyphMap.TryGetValue(glyph.CodePoint, out ushort glyphIndex)
+    private static Geometry GetGlyphOutline(Glyph glyph, GlyphTypeface typeface, double renderingEmSize) =>
+        typeface.CharacterToGlyphMap.TryGetValue(glyph.CodePoint, out ushort glyphIndex)
             ? typeface.GetGlyphOutline(glyphIndex, renderingEmSize, hintingEmSize: 1)
             : throw new InvalidOperationException(ExceptionMessages.GlyphNotFound);
-    }
 
     private static TransformGroup CreateAutoFitTransform(Geometry outline)
     {
