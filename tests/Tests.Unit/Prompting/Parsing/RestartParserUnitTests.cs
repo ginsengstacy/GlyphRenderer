@@ -1,4 +1,4 @@
-﻿using GlyphRasterizer.Prompting.Prompts.InputType.Key.Restart;
+﻿using GlyphRenderer.Prompting.Prompts.InputType.Key.Restart;
 using Tests.Common.Prompting.Parsing;
 
 namespace Tests.Unit.Prompting.Parsing;

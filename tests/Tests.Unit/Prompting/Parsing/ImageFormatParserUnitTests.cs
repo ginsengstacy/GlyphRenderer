@@ -1,5 +1,5 @@
-﻿using GlyphRasterizer.Configuration;
-using GlyphRasterizer.Prompting.Prompts.InputType.String.ImageFormat;
+﻿using GlyphRenderer.Configuration;
+using GlyphRenderer.Prompting.Prompts.InputType.String.ImageFormat;
 using ImageMagick;
 using Resources.Messages;
 using Tests.Common.Prompting.Parsing;

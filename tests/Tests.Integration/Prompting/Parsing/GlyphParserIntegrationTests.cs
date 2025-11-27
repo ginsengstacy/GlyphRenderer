@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using GlyphRasterizer.Prompting.Prompts.InputType.String.Glyph;
+using GlyphRenderer.Prompting.Prompts.InputType.String.Glyph;
 using Resources;
 using Resources.Messages;
 using System.Collections.Immutable;

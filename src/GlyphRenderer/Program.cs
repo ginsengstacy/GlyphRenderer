@@ -1,0 +1,28 @@
+﻿using GlyphRenderer.DI;
+using GlyphRenderer.Terminal;
+using Microsoft.Extensions.DependencyInjection;
+using System.Text;
+
+namespace GlyphRenderer;
+
+public static class Program
+{
+    public static void Main(string[] args)
+    {
+        ServiceProvider provider = DependencyRoot.BuildServiceProvider();
+
+        Console.InputEncoding = Encoding.Unicode;
+        Console.OutputEncoding = Encoding.Unicode;
+
+        if (args.Length > 0)
+        {
+            var cli = provider.GetRequiredService<CLI>();
+            cli.Run(args);
+        }
+        else
+        {
+            var interactiveLoop = provider.GetRequiredService<InteractiveLoop>();
+            interactiveLoop.Run();
+        }
+    }
+}

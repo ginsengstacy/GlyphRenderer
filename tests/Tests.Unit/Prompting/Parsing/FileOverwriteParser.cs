@@ -1,4 +1,4 @@
-﻿using GlyphRasterizer.Prompting.Prompts.InputType.Key.OverwriteFile;
+﻿using GlyphRenderer.Prompting.Prompts.InputType.Key.OverwriteFile;
 using Tests.Common.Prompting.Parsing;
 
 namespace Tests.Unit.Prompting.Parsing;

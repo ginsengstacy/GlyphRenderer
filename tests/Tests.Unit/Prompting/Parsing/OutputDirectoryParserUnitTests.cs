@@ -1,4 +1,4 @@
-﻿using GlyphRasterizer.Prompting.Prompts.InputType.String.OutputDirectory;
+﻿using GlyphRenderer.Prompting.Prompts.InputType.String.OutputDirectory;
 using Resources.Messages;
 using Tests.Common.Prompting.Parsing;
 

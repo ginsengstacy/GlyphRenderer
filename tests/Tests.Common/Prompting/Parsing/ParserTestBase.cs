@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using GlyphRasterizer.Extensions;
-using GlyphRasterizer.Prompting;
+using GlyphRenderer.Extensions;
+using GlyphRenderer.Prompting;
 
 namespace Tests.Common.Prompting.Parsing;
 

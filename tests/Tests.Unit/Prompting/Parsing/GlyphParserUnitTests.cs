@@ -1,4 +1,4 @@
-﻿using GlyphRasterizer.Prompting.Prompts.InputType.String.Glyph;
+﻿using GlyphRenderer.Prompting.Prompts.InputType.String.Glyph;
 using Resources.Messages;
 using System.Windows.Media;
 using Tests.Common.Prompting.Parsing;

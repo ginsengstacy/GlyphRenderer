@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppHeader" xml:space="preserve">
-    <value>=== Glyph Rasterizer ===</value>
+    <value>=== Glyph Renderer ===</value>
   </data>
   <data name="AvailableCommands_FormatString" xml:space="preserve">
     <value>Commands: {0}</value>
@@ -133,6 +133,6 @@
     <value>Saved {0}.</value>
   </data>
   <data name="SkippedRasterization_FormatString" xml:space="preserve">
-    <value>Skipped rasterization for {0}.</value>
+    <value>Skipped rendering for {0}.</value>
   </data>
 </root>
