@@ -102,4 +102,4 @@ During an interactive session, you can enter the following commands at any promp
 
 ### Example Session
 
-<img width="1712" height="947" alt="Screenshot 2025-11-09 032109" src="https://github.com/user-attachments/assets/d40f711d-f053-40b5-97ca-e060b1367da4" />
+<img width="1877" height="987" alt="GlyphRenderer_ExampleSession" src="https://github.com/user-attachments/assets/1d1168a0-5657-4055-a90d-b130902366d7" />
