@@ -31,7 +31,7 @@
 ### Usage
 
 ```
-GlyphRasterizer.exe <font> <glyph> <output> [options]
+GlyphRenderer.exe <font> <glyph> <output> [options]
 ```
 
 ### Arguments
@@ -56,13 +56,13 @@ GlyphRasterizer.exe <font> <glyph> <output> [options]
 Render a single glyph `A` as a **Red JPEG**:
 
 ```
-GlyphRasterizer.exe C:\Users\Alice\Fonts\Arial.ttf A C:\Users\Alice\Output --color Red --format jpeg
+GlyphRenderer.exe C:\Users\Alice\Fonts\Arial.ttf A C:\Users\Alice\Output --color Red --format jpeg
 ```
 
 Render multiple glyphs `ABC123` **without additional options**:
 
 ```
-GlyphRasterizer.exe C:\Users\Alice\Fonts\Arial.ttf ABC123 C:\Users\Alice\Output
+GlyphRenderer.exe C:\Users\Alice\Fonts\Arial.ttf ABC123 C:\Users\Alice\Output
 ```
 > **Note:** Defaults to **Black PNG**.
 
@@ -77,7 +77,7 @@ Guides you through configuration and rendering without passing command-line argu
 When you run the app without arguments:
 
 ```
-GlyphRasterizer.exe
+GlyphRenderer.exe
 ```
 
 the tool starts an interactive session that:
