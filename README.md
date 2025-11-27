@@ -31,7 +31,7 @@
 ### Usage
 
 ```
-GlyphRasterizer.exe <font> <glyph> <output> [options]
+GlyphRenderer.exe <font> <glyph> <output> [options]
 ```
 
 ### Arguments
@@ -56,13 +56,13 @@ GlyphRasterizer.exe <font> <glyph> <output> [options]
 Render a single glyph `A` as a **Red JPEG**:
 
 ```
-GlyphRasterizer.exe C:\Users\Alice\Fonts\Arial.ttf A C:\Users\Alice\Output --color Red --format jpeg
+GlyphRenderer.exe C:\Users\Alice\Fonts\Arial.ttf A C:\Users\Alice\Output --color Red --format jpeg
 ```
 
 Render multiple glyphs `ABC123` **without additional options**:
 
 ```
-GlyphRasterizer.exe C:\Users\Alice\Fonts\Arial.ttf ABC123 C:\Users\Alice\Output
+GlyphRenderer.exe C:\Users\Alice\Fonts\Arial.ttf ABC123 C:\Users\Alice\Output
 ```
 > **Note:** Defaults to **Black PNG**.
 
@@ -77,7 +77,7 @@ Guides you through configuration and rendering without passing command-line argu
 When you run the app without arguments:
 
 ```
-GlyphRasterizer.exe
+GlyphRenderer.exe
 ```
 
 the tool starts an interactive session that:
@@ -102,4 +102,4 @@ During an interactive session, you can enter the following commands at any promp
 
 ### Example Session
 
-<img width="1712" height="947" alt="Screenshot 2025-11-09 032109" src="https://github.com/user-attachments/assets/d40f711d-f053-40b5-97ca-e060b1367da4" />
+<img width="1877" height="987" alt="GlyphRenderer_ExampleSession" src="https://github.com/user-attachments/assets/1d1168a0-5657-4055-a90d-b130902366d7" />
