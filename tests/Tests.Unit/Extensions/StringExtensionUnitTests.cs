@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using GlyphRenderer.Extensions;
+using Tests.Common.Extensions;
 
 namespace Tests.Unit.Extensions;
 

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace GlyphRenderer.Extensions;
+namespace Tests.Common.Extensions;
 
 public static partial class StringExtensions
 {
